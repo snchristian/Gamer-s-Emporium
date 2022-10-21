@@ -47,6 +47,12 @@ group :development do
 end
 
 gem 'rest-client', '~> 2.1'
+
 gem 'dotenv-rails', '~> 2.8', '>= 2.8.1'
+
 gem 'pry'
 
+
+gem "active_model_serializers", "~> 0.10.13"
+
+gem "net-http"
