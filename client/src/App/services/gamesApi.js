@@ -29,11 +29,21 @@ export const gamesApi = createApi({
                     method: 'POST',
                     body,
                   }),
-            })          
+            }),
+            
+            logOutUser: builder.mutation({
+                query() {
+                    return {
+                      url: `logout`,
+                      method: 'DELETE',
+                    }
+                }
+
+            })
           
 }
 }
 })
 
 
-export const {useFetchUserQuery,useSignupUserMutation,useLoginUserMutation} = gamesApi
+export const {useFetchUserQuery,useSignupUserMutation,useLoginUserMutation,useLogOutUserMutation} = gamesApi

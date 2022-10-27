@@ -18,6 +18,7 @@ const sessionSlice = createSlice({
         },
 
         loggedOut(state){
+            state.currentUser = {}
             state.loggedIn = false
 
         }
