@@ -4,10 +4,9 @@ import {useSelector, useDispatch} from 'react-redux'
 import { loggedIn, setCurrentuser } from "../../features/session/SessionsSlice"
 
 
-
 function Signup() {
 
-  const [updatePost, results] = useSignupUserMutation()
+  const [updatePost,] = useSignupUserMutation()
   // console.log(results)
   const dispatch = useDispatch()
 
@@ -22,7 +21,7 @@ function Signup() {
       }
     }
 
-    updatePost(newUser).unwrap().then(fulfilled => dispatch(setCurrentuser(fulfilled)),dispatch(loggedIn())).catch(rejected => console.error(rejected))
+    updatePost(newUser).unwrap().then(fulfilled => dispatch(setCurrentuser(fulfilled))).catch(rejected => console.error(rejected))
     console.log(newUser)
     
   }
