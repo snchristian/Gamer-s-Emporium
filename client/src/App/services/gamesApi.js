@@ -14,18 +14,26 @@ export const gamesApi = createApi({
             }),
 
             signupUser: builder.mutation({
-                // alt syntax
+                
                 query: (body) => ({
                     url: `signup`,
                     method: 'POST',
                     body,
                   }),
-            })
-            
+            }),
+
+            loginUser: builder.mutation({
+                
+                query: (body) => ({
+                    url: `login`,
+                    method: 'POST',
+                    body,
+                  }),
+            })          
           
 }
 }
 })
 
 
-export const {useFetchUserQuery,useSignupUserMutation} = gamesApi
+export const {useFetchUserQuery,useSignupUserMutation,useLoginUserMutation} = gamesApi

@@ -11,14 +11,17 @@ const sessionSlice = createSlice({
     name: "session",
     initialState,
     reducers:{
-        loggedIn(state){
-            state.loggedIn = !state.loggedIn
-        },
-
+       
         setCurrentuser(state,action){
             state.currentUser = action.payload
+            state.loggedIn = true
+        },
+
+        loggedOut(state){
+            state.loggedIn = false
+
         }
     }
 })
-export const {loggedIn,setCurrentuser} = sessionSlice.actions
+export const {loggedIn,loggedOut,setCurrentuser} = sessionSlice.actions
 export default sessionSlice.reducer
