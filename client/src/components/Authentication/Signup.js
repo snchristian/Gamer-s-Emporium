@@ -1,12 +1,12 @@
 import {React,useState} from "react"
 import {useSignupUserMutation} from '../../App/services/gamesApi'
 import {useSelector, useDispatch} from 'react-redux'
-import { loggedIn, setCurrentuser } from "../../features/session/SessionsSlice"
+import { setCurrentuser } from "../../features/session/SessionsSlice"
 
 
 function Signup() {
 
-  const [updatePost,] = useSignupUserMutation()
+  const [updateUser,] = useSignupUserMutation()
   // console.log(results)
   const dispatch = useDispatch()
 
@@ -21,7 +21,7 @@ function Signup() {
       }
     }
 
-    updatePost(newUser).unwrap().then(fulfilled => dispatch(setCurrentuser(fulfilled))).catch(rejected => console.error(rejected))
+    updateUser(newUser).unwrap().then(fulfilled => dispatch(setCurrentuser(fulfilled))).catch(rejected => console.error(rejected))
     console.log(newUser)
     
   }

@@ -1,10 +1,10 @@
 import {React,useState} from "react"
 import { useDispatch} from 'react-redux'
 import {useFetchUserQuery,useLoginUserMutation} from '../../App/services/gamesApi'
-import { loggedIn, setCurrentuser } from "../../features/session/SessionsSlice"
+import { setCurrentuser } from "../../features/session/SessionsSlice"
 
 function Login() {
-  const [updatePost] = useLoginUserMutation()
+  const [updateUser] = useLoginUserMutation()
   
 
   const [UserData, setUserData] = useState({
@@ -31,7 +31,7 @@ function Login() {
     }
 
     // dispatch(loggedIn())
-    updatePost(UserInfo).unwrap().then(fulfilled => dispatch(setCurrentuser(fulfilled))).catch(rejected => console.error(rejected))
+    updateUser(UserInfo).unwrap().then(fulfilled => dispatch(setCurrentuser(fulfilled))).catch(rejected => console.error(rejected))
 
   }
 
