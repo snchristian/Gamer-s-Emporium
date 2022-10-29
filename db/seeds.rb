@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+
+Question.create(prompt:"Select three of your favorite genere of games", kind:"interest", answers:["Action","Adventure","RPG","Shooter","Indie","Puzzle", "Massibely" "Multiplayer"])
+Question.create(prompt:"What platforms do you own", kind:"platform", answers:["Xbox","Swtich","Playstation","PC"])
