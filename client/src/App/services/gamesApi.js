@@ -52,13 +52,18 @@ export const gamesApi = createApi({
           url: `users/${id}`,
           method: 'PATCH',
           body: patch,
-        }),
-      })
+        })
+      }),
 
-
+      fetchGames: builder.query({
+        query() {
+          return 'games'
+        }
+      }),
+      
     }
   }
 })
 
 
-export const { useFetchUserQuery, useSignupUserMutation, useLoginUserMutation, useLogOutUserMutation, useFetchQuestionQuery, useUpdateUserDataMutation } = gamesApi
+export const { useFetchUserQuery, useSignupUserMutation, useLoginUserMutation, useLogOutUserMutation, useFetchQuestionQuery, useUpdateUserDataMutation,useFetchGamesQuery } = gamesApi

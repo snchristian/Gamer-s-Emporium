@@ -36,7 +36,7 @@ function Onboarding() {
         platforms: userPlatform
       }
 
-      naviagte('/')
+      naviagte('/games')
       dispatch(setCurrentQuestion(null));
       updateUserData({ id: currentUserId, user: user })
     }

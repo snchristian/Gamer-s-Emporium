@@ -8,6 +8,8 @@ import { useDispatch } from 'react-redux'
 import { setCurrentuser, } from "./features/session/SessionsSlice"
 import { React, useEffect } from 'react';
 import Onboarding from './components/Static/Onboarding/Onboarding';
+import Games from './components/content/Games/Games';
+import Game from './components/content/Games/Game';
 
 
 function App() {
@@ -39,7 +41,9 @@ function App() {
         <Route exact path='/' element={<Home />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/onboarding' element={<Onboarding />} />
+        <Route path='/onboarding' element={<Onboarding />}/>
+        <Route path='/games' element={<Games/>}/>
+        <Route path='/games/:id' element={<Game/>}/>
       </Routes>
 
     </div>
