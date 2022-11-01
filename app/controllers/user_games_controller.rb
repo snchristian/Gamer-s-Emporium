@@ -1,4 +1,6 @@
 class UserGamesController < ApplicationController
+    wrap_parameters false
+    before_action :set_user_game, only: %i[destroy]
 
     def index
         @user_games = current_user.user_games
@@ -14,9 +16,19 @@ class UserGamesController < ApplicationController
         end
     end
 
+    def destroy
+        @user_game.destroy
+    end
+
     private
+
+    def set_user_game
+        @user_game = UserGame.find(params[:id])
+    end
+
     def user_games_params
         params.permit(:game_id)
     end
+
 
 end

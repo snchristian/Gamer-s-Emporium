@@ -67,10 +67,19 @@ export const gamesApi = createApi({
           body,
         })
       }),
+
+      removeGame: builder.mutation({
+        query:(id) =>({
+          url: `user_games/${id}`,
+          method: `DELETE`
+
+        })
+
+      })
       
     }
   }
 })
 
 
-export const { useFetchUserQuery, useSignupUserMutation, useLoginUserMutation, useLogOutUserMutation, useFetchQuestionQuery, useUpdateUserDataMutation,useFetchGamesQuery,useAddGameMutation} = gamesApi
+export const { useFetchUserQuery, useSignupUserMutation, useLoginUserMutation, useLogOutUserMutation, useFetchQuestionQuery, useUpdateUserDataMutation,useFetchGamesQuery,useAddGameMutation,useRemoveGameMutation} = gamesApi
