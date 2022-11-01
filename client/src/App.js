@@ -10,6 +10,7 @@ import { React, useEffect } from 'react';
 import Onboarding from './components/Static/Onboarding/Onboarding';
 import Games from './components/content/Games/Games';
 import Game from './components/content/Games/Game';
+import MyGame from './components/content/Games/MyGame';
 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
         <Route path='/onboarding' element={<Onboarding />}/>
         <Route path='/games' element={<Games/>}/>
         <Route path='/games/:id' element={<Game/>}/>
+        <Route path='/my-games' element={<MyGame/>}/>
       </Routes>
 
     </div>

@@ -60,10 +60,17 @@ export const gamesApi = createApi({
           return 'games'
         }
       }),
+      addGame: builder.mutation({
+        query: (body) => ({
+          url: `user_games`,
+          method: 'POST',
+          body,
+        })
+      }),
       
     }
   }
 })
 
 
-export const { useFetchUserQuery, useSignupUserMutation, useLoginUserMutation, useLogOutUserMutation, useFetchQuestionQuery, useUpdateUserDataMutation,useFetchGamesQuery } = gamesApi
+export const { useFetchUserQuery, useSignupUserMutation, useLoginUserMutation, useLogOutUserMutation, useFetchQuestionQuery, useUpdateUserDataMutation,useFetchGamesQuery,useAddGameMutation} = gamesApi

@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { useFetchGamesQuery } from '../../../App/services/gamesApi'
+import { useFetchGamesQuery,useAddGameMutation } from '../../../App/services/gamesApi'
 import { useDispatch,useSelector } from 'react-redux'
 import {setSingleGame} from "../../../features/games/GameSlice"
 
 function Game() {
     const { id } = useParams();
     const dispatch = useDispatch()
-    const {data=[], isFetching} = useFetchGamesQuery()
+    const {data=[]} = useFetchGamesQuery()
+    const [addGame] = useAddGameMutation()
 
 
     useEffect(() =>{
@@ -32,6 +33,8 @@ function Game() {
   }
 
   function addtoLibrary(){
+    addGame({game_id:id})
+
 
   }
   

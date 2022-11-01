@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     singleGame: {},
-    requesting:true
+    requesting:true,
+     gameLibrary:[]
   }
   
   const gameSlice = createSlice({
@@ -12,9 +13,14 @@ const initialState = {
         setSingleGame(state,action){
             state.singleGame = action.payload
             state.requesting = false
+        },
+
+        setGameLibrary(state,action){
+          state.gameLibrary = action.payload
+
         }
     }
   })
 
-  export const {setSingleGame} = gameSlice.actions
+  export const {setSingleGame,setGameLibrary} = gameSlice.actions
   export default gameSlice.reducer
