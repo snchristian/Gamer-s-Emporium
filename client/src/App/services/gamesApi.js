@@ -75,11 +75,19 @@ export const gamesApi = createApi({
 
         })
 
-      })
+      }),
+
+      addUserRevview:builder.mutation({
+        query: (body) => ({
+          url: `reviews`,
+          method: 'POST',
+          body,
+        })
+      }),
       
     }
   }
 })
 
 
-export const { useFetchUserQuery, useSignupUserMutation, useLoginUserMutation, useLogOutUserMutation, useFetchQuestionQuery, useUpdateUserDataMutation,useFetchGamesQuery,useAddGameMutation,useRemoveGameMutation} = gamesApi
+export const { useFetchUserQuery, useSignupUserMutation, useLoginUserMutation, useLogOutUserMutation, useFetchQuestionQuery, useUpdateUserDataMutation,useFetchGamesQuery,useAddGameMutation,useRemoveGameMutation,useAddUserRevviewMutation} = gamesApi

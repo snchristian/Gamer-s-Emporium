@@ -1,8 +1,14 @@
 import React from 'react'
 
-function Review() {
+function Review({gameReview}) {
+  const {content} = gameReview
   return (
-    <div>Review</div>
+    <main>
+      <div>Review</div>
+      {content}
+    </main>
+    
+
   )
 }
 

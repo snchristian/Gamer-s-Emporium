@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
 
     def create
         @review = current_user.reviews.new(review_params)
-
+        
         if @review.save
             render json: @review, status: :created
         else
@@ -29,8 +29,8 @@ class ReviewsController < ApplicationController
         @review = review.find(params[:id])
     end
 
-    def comment_params
-        params.require(:review).permit(:body,:game_id)
+    def review_params
+        params.require(:review).permit(:content,:game_id)
     end
 
 
