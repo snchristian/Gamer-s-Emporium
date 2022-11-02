@@ -25,9 +25,7 @@ function ReviewForm() {
 
       }
 
-      addUserReview(review).unwrap().then(fullfiled => {
-        dispatch(addGameReview(fullfiled))
-      })
+      addUserReview(review)
       dispatch(clearContent())
 
     }

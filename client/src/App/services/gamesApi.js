@@ -77,17 +77,45 @@ export const gamesApi = createApi({
 
       }),
 
+      fetchReview: builder.query({
+        query(id) {
+          return `games/${id}/reviews`
+        },providesTags:['reviews'],
+      }),
+
       addUserRevview:builder.mutation({
         query: (body) => ({
           url: `reviews`,
           method: 'POST',
           body,
-        })
+        }),
+        invalidatesTags:['reviews']  
       }),
-      
+
+      deleteUserReview: builder.mutation({
+        query:(id) =>({
+          url: `reviews/${id}`,
+          method: `DELETE`
+
+        }),
+        invalidatesTags:['reviews']    
+       })
     }
-  }
-})
+}
+  })
 
 
-export const { useFetchUserQuery, useSignupUserMutation, useLoginUserMutation, useLogOutUserMutation, useFetchQuestionQuery, useUpdateUserDataMutation,useFetchGamesQuery,useAddGameMutation,useRemoveGameMutation,useAddUserRevviewMutation} = gamesApi
+export const { 
+  useFetchUserQuery, 
+  useSignupUserMutation, 
+  useLoginUserMutation, 
+  useLogOutUserMutation, 
+  useFetchQuestionQuery, 
+  useUpdateUserDataMutation,
+  useFetchGamesQuery,
+  useAddGameMutation,
+  useRemoveGameMutation,
+  useAddUserRevviewMutation,
+  useDeleteUserReviewMutation,
+  useFetchReviewQuery,
+} = gamesApi

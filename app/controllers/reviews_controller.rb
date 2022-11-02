@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+    before_action :set_review, only: %i[destroy]
     def index
         if params[:game_id]
             game = Game.find(params[:game_id])
@@ -26,7 +27,7 @@ class ReviewsController < ApplicationController
     private 
 
     def set_review
-        @review = review.find(params[:id])
+        @review = Review.find(params[:id])
     end
 
     def review_params

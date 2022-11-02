@@ -13,18 +13,14 @@ const reviewSlice = createSlice({
             state.content = action.payload
         },
 
-        addGameReview(state,action){
-             state.gameReviews=[...state.gameReviews,action.payload]
-
-        },
-
         clearContent(state){
             state.content =''
 
         },
         setGameReview(state,action){
             state.gameReviews = action.payload
-        }
+        },
+
     }
 })
 
