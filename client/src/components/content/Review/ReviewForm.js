@@ -1,7 +1,9 @@
 import React from 'react'
-import {setContent,addGameReview,clearContent} from '../../../features/Review/ReviewSlice'
+import {setContent,clearContent} from '../../../features/Review/ReviewSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { useAddUserRevviewMutation, } from '../../../App/services/gamesApi'
+import { useState } from 'react'
+
 
 function ReviewForm() {
 
@@ -12,14 +14,21 @@ function ReviewForm() {
   const [addUserReview] = useAddUserRevviewMutation()
 
   const singleGameId = useSelector(state => state.game.singleGame.id)
+
+  const [rating,setRating]=useState()
   
     function handleChange(event){
         dispatch(setContent(event.target.value))
     }
 
+    function handleChange2(event){
+      setRating(event.target.value)
+    }
+
     function addReview(event){
       event.preventDefault();
       const review = {
+        rating:rating,
         content:content,
         game_id:singleGameId
 
@@ -32,6 +41,7 @@ function ReviewForm() {
 
   return (
     <form onSubmit={addReview}>
+      <input name='rating' value={rating} onChange={handleChange2}/>
         <textarea
         name='content'
         value={content}
