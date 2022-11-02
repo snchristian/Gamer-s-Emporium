@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { useFetchGamesQuery,useAddGameMutation,useRemoveGameMutation } from '../../../App/services/gamesApi'
 import { useDispatch,useSelector } from 'react-redux'
 import {setSingleGame} from "../../../features/games/GameSlice"
+import Reviews from '../Review/Reviews'
 
 function Game() {
     const { id } = useParams();
@@ -53,7 +54,7 @@ function Game() {
       const updatedgame = {...singleGame,inUserGameLibrary:null}
       dispatch(setSingleGame(updatedgame))
     })
-    
+
   }
 
   
@@ -66,7 +67,8 @@ function Game() {
         {inLibrary && <button onClick={removeFromLibrary}>Remove From Library</button>}
         <div>Released Date: {released_date}</div>
         <div>{genres.map(genre => <span key={genre}>{genre} </span>)}</div>
-        <div>{platforms.map(platform => <span key={platform}>{platform} </span>)}</div>   
+        <div>{platforms.map(platform => <span key={platform}>{platform} </span>)}</div>
+        <Reviews/>  
 </main>
   )
 }
