@@ -99,8 +99,17 @@ export const gamesApi = createApi({
 
         }),
         invalidatesTags:['reviews']    
-       })
-    }
+       }),
+       
+       editUserReview:builder.mutation({
+        query: ({ id, ...patch}) => ({
+          url: `reviews/${id}`,
+          method: 'PATCH',
+          body: patch,
+        }),
+        invalidatesTags:['reviews']
+    })
+  }
 }
   })
 
@@ -118,4 +127,5 @@ export const {
   useAddUserRevviewMutation,
   useDeleteUserReviewMutation,
   useFetchReviewQuery,
+  useEditUserReviewMutation,
 } = gamesApi

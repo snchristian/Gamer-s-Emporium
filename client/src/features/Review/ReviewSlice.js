@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState ={
     content: '',
-    gameReviews:[]
+    gameReviews:[],
+    activeReview:null
 }
 
 const reviewSlice = createSlice({
@@ -21,8 +22,12 @@ const reviewSlice = createSlice({
             state.gameReviews = action.payload
         },
 
+        setActiveComment(state,action){
+            state.activeReview = action.payload
+        }
+
     }
 })
 
-export const {setContent,addGameReview,clearContent,setGameReview} = reviewSlice.actions
+export const {setContent,clearContent,setGameReview,setActiveComment} = reviewSlice.actions
 export default reviewSlice.reducer

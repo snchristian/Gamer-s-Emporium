@@ -1,47 +1,35 @@
 import React from 'react'
-import {setContent,clearContent} from '../../../features/Review/ReviewSlice'
 import { useDispatch, useSelector } from 'react-redux'
-import { useAddUserRevviewMutation, } from '../../../App/services/gamesApi'
 import { useState } from 'react'
+import StarRating from './StarRating'
 
 
-function ReviewForm() {
 
-  const dispatch = useDispatch()
+function ReviewForm({initalReview = {rating:null, content:null}, handleSubmit}) {
 
-  const content = useSelector(state => state.review.content)
+  const [content,setContent] =useState(initalReview.content)
 
-  const [addUserReview] = useAddUserRevviewMutation()
-
-  const singleGameId = useSelector(state => state.game.singleGame.id)
-
-  const [rating,setRating]=useState()
+  const [rating,setRating]=useState(initalReview.rating)
+ 
   
     function handleChange(event){
-        dispatch(setContent(event.target.value))
+        setContent(event.target.value)
     }
 
-    function handleChange2(event){
-      setRating(event.target.value)
-    }
+    function onSubmit(event){
 
-    function addReview(event){
       event.preventDefault();
-      const review = {
-        rating:rating,
-        content:content,
-        game_id:singleGameId
-
-      }
-
-      addUserReview(review)
-      dispatch(clearContent())
+       const review ={rating:rating,content:content}
+      handleSubmit(review)
+      setContent([])
+      setRating([]) 
 
     }
 
   return (
-    <form onSubmit={addReview}>
-      <input name='rating' value={rating} onChange={handleChange2}/>
+    <main>
+      <form onSubmit={onSubmit}>
+      <StarRating setRating={setRating} rating={rating} />
         <textarea
         name='content'
         value={content}
@@ -49,6 +37,10 @@ function ReviewForm() {
         />
         <input className='submit' type='submit' value="post"/>
     </form>
+      </main>
+    
+    
+    
   )
 }
 
