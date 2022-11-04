@@ -1,10 +1,12 @@
 class UserGamesController < ApplicationController
     wrap_parameters false
+    before_action :authentication
     before_action :set_user_game, only: %i[destroy]
+    
 
     def index
         @user_games = current_user.user_games
-        render json: @user_games
+        render json: @user_games, status: :ok
     end
 
     def create 

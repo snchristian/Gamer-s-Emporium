@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ update destroy ]
 
+  before_action :authentication
+  before_action :set_user, only: %i[ update destroy ]
 
   def show
 
@@ -22,6 +23,7 @@ class UsersController < ApplicationController
   end
 
   def update
+
      user = User.find_by(id:params[:id])
      
      if user 
@@ -34,10 +36,7 @@ class UsersController < ApplicationController
       render json: {error: "something is wrong"}
      end
       
-
   end
-
-
 
   private
   

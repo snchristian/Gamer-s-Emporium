@@ -3,39 +3,14 @@ class GamesController < ApplicationController
 
   # GET /games
   def index
-    @games = Game.all
+    @games = Game.limit(20)
 
-    render json: @games
+    render json: @games, status: :ok
   end
 
   # GET /games/1
   def show
     render json: @game
-  end
-
-  # POST /games
-  def create
-    @game = Game.new(game_params)
-
-    if @game.save
-      render json: @game, status: :created, location: @game
-    else
-      render json: @game.errors, status: :unprocessable_entity
-    end
-  end
-
-  # PATCH/PUT /games/1
-  def update
-    if @game.update(game_params)
-      render json: @game
-    else
-      render json: @game.errors, status: :unprocessable_entity
-    end
-  end
-
-  # DELETE /games/1
-  def destroy
-    @game.destroy
   end
 
   private

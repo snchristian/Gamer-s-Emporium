@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
     
     before_action :set_review, only: %i[destroy update]
+    before_action :authentication, only:[:create]
 
     def index
         if params[:game_id]
@@ -9,7 +10,7 @@ class ReviewsController < ApplicationController
         else
             @reviews = Review.all
         end
-        render json: @reviews 
+        render json: @reviews, status: :ok
     end
 
     def create
@@ -28,7 +29,7 @@ class ReviewsController < ApplicationController
         if @review.update(review_params)
             render json: @review
         else 
-            render json: {errors: @review.errors.full_messages}
+            render json: {errors: @review.errors.full_messages}, status: :unprocessable_entity
         end
     end
 
