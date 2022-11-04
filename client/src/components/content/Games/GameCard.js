@@ -1,21 +1,46 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Container, Img } from './Styling/GameCardStyle'
+
 
 
 function GameCard({game}) {
 
-    const {id,title,image} = game
+    const [isHovered, setIsHovered] = useState(false);
+    const {id,title,image,genres} = game
     const navigate = useNavigate()
+    console.log(genres)
     
     
     
     return (
-    <main>
-        <img src ={image} alt={title}/>
-        <h3 onClick={() => navigate(`/games/${id}`)}>{title}</h3>
+      <Container
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      >
         
-        
-    </main>
+        <Img src={image} alt={title}/>
+        {isHovered && (
+          <div className='hover'>
+            <img className='image-container' src={image} alt={title} />
+            <div className='info-container'>
+              <h3 onClick={() => navigate(`/games/${id}`)}>{title}</h3>
+              <div className='icons'>
+                <div className="controls" ></div>
+                <div className="genres">
+              <ul >
+                {genres.map((genre) => (
+                  <li>{genre}</li>
+                ))}
+              </ul>
+            </div>
+              </div>
+            </div>
+          </div>
+
+        )}
+
+      </Container>
 
   )
 }

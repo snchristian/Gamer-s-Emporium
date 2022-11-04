@@ -4,6 +4,7 @@ import { useDispatch,useSelector } from 'react-redux'
 import {setGameReview} from '../../../features/Review/ReviewSlice'
 import { useFetchReviewQuery,useAddUserRevviewMutation } from '../../../App/services/gamesApi'
 import Review from './Review'
+import { Container } from './ReviewStyle'
 
 function Reviews() {
   const dispatch = useDispatch()
@@ -33,14 +34,25 @@ function Reviews() {
   const gameReviews = useSelector(state => state.review.gameReviews)
 
 
-const GameReview = gameReviews.map(gameReview  => <Review key={gameReview.id} gameReview={gameReview}/> )
+const GameReview = gameReviews.map(gameReview  =>  (
+  <ol className='list' key={gameReview.id}>
+    <Review  gameReview={gameReview}/>
+
+  </ol>
+
+) )
 
   return (
-    <main>
-      <div>Reviews</div>
+    <Container>
+      <div className='review-form'>
+      <h3>Reviews</h3>
      <ReviewForm handleSubmit={addReview}/>
-     {GameReview}
-    </main>
+    </div>
+    <div className='class'>
+      {GameReview}
+     </div>
+    </Container>
+    
     
   )
 }

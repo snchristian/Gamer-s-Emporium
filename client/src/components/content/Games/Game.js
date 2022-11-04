@@ -4,6 +4,7 @@ import { useFetchGamesQuery,useAddGameMutation,useRemoveGameMutation } from '../
 import { useDispatch,useSelector } from 'react-redux'
 import {setSingleGame} from "../../../features/games/GameSlice"
 import Reviews from '../Review/Reviews'
+import { Container } from './Styling/GameStyle'
 
 function Game() {
     const { id } = useParams();
@@ -12,11 +13,6 @@ function Game() {
     const [addGame] = useAddGameMutation()
     const [removeGame]= useRemoveGameMutation()
     
-
-
-
-
-
     useEffect(() =>{
         
         if(data.length > 0){
@@ -57,19 +53,22 @@ function Game() {
 
   }
 
-  
-
   return (
-    <main>
-        <h2>{title}</h2>
+    <Container>
+      <div className='wrapper'>
         <img src={image} alt={title}/>
-        {!inLibrary && <button onClick={addtoLibrary}>Add to My Games</button>}
-        {inLibrary && <button onClick={removeFromLibrary}>Remove From Library</button>}
-        <div>Released Date: {released_date}</div>
-        <div>{genres.map(genre => <span key={genre}>{genre} </span>)}</div>
-        <div>{platforms.map(platform => <span key={platform}>{platform} </span>)}</div>
-        <Reviews/>  
-</main>
+        <div>
+          <h2>{title}</h2>
+          <div>Released Date: {released_date}</div>    
+          {genres.map(genre => <span key={genre}>{genre} </span>)}
+          <div>{platforms.map(platform => <span key={platform}>{platform} </span>)}</div> 
+          {!inLibrary && <button  onClick={addtoLibrary}>Add to My Games</button>}
+          {inLibrary && <button onClick={removeFromLibrary}>Remove From Library</button>}
+        </div>
+      </div>
+      <div className='line'></div> 
+      <Reviews/>  
+    </Container>
   )
 }
 

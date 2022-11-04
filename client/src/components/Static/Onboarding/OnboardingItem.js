@@ -1,13 +1,15 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch} from 'react-redux'
 import { selectUserIntrest, unselectInterest, selectUserPlatform, unselectPlatform } from '../../../features/Question/QuestionSlice'
+import {FaChessQueen} from 'react-icons/fa'
+import { Container, Wrapper } from './OnboardingStyle'
 
 
-function OnboardingItem({ question }) {
 
+function OnboardingItem({question,handleNextQuestion}) {
 
   const {  prompt, answers, kind } = question
-  console.log(question)
+  
   const dispatch = useDispatch()
 
   const handleChange = (event) => {
@@ -31,31 +33,34 @@ function OnboardingItem({ question }) {
 
   const options = answers.map(answer => {
     return (
-      <div key={answer}>
+      <div key={answer} className='form-element'>
         <input
-          className="form-check-input"
+          className="interest"
           type="checkbox"
+          id={answer}
           name={kind}
           value={answer}
-          id="flexCheckDefault"
           onChange={handleChange}
-
         />
         <label
-          className="form-check-label"
-          htmlFor="flexCheckDefault">
-          {answer}
+          className="interest" htmlFor={answer}>
+            <div className='icon'><FaChessQueen className='fa-queen'/></div>
+          <div className='title'>{answer}</div>
         </label>
       </div>
     )
   })
 
   return (
-    <div>
+    <Container className='container'>
       <h2>{prompt}</h2>
-      {options}
-    </div>
-
+      <div className='wrapper'>
+        <div className='list'>
+       {options}
+      </div>
+      </div>
+      <button onClick={handleNextQuestion}>Next</button>
+    </Container>
   )
 }
 

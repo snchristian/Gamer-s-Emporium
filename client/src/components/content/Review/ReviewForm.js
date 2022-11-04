@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useState } from 'react'
 import StarRating from './StarRating'
+import { Container } from './ReviewStyle'
 
 
 
@@ -27,8 +28,8 @@ function ReviewForm({initalReview = {rating:null, content:null}, handleSubmit}) 
     }
 
   return (
-    <main>
-      <form onSubmit={onSubmit}>
+    <Container>
+      <form className='form' onSubmit={onSubmit}>
       <StarRating setRating={setRating} rating={rating} />
         <textarea
         name='content'
@@ -37,10 +38,7 @@ function ReviewForm({initalReview = {rating:null, content:null}, handleSubmit}) 
         />
         <input className='submit' type='submit' value="post"/>
     </form>
-      </main>
-    
-    
-    
+    </Container> 
   )
 }
 

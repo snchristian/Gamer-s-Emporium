@@ -1,13 +1,13 @@
-import React, { useEffect,useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch,useSelector } from 'react-redux'
 import {setGameLibrary} from "../../../features/games/GameSlice"
 import GameCard from './GameCard'
+import { Container } from './Styling/GameListStyle'
 
 
 function MyGame() {
     
     const dispatch = useDispatch()
-  
   
     useEffect(() =>{
         fetch('/user_games')
@@ -16,20 +16,17 @@ function MyGame() {
     },[dispatch])
 
     
-
-
-
     const gameLibrary = useSelector(state => state.game.gameLibrary)
-    console.log(gameLibrary)
 
     const UserGame = gameLibrary.map(gamelibray => gamelibray.game).map(game =><GameCard key={game.id} game={game}/>)
-    console.log(UserGame)
-
-
+  
   return (
-    <div>{UserGame}</div>
-    
-
+    <Container>
+      <div className='content'>
+      <h1>My Game</h1>
+      <div className='grid'>{UserGame}</div>
+      </div> 
+    </Container>  
   )
 }
 

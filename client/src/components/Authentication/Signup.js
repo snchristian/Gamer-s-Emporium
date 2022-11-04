@@ -3,12 +3,14 @@ import { useSignupUserMutation } from '../../App/services/gamesApi'
 import { useDispatch } from 'react-redux'
 import { setCurrentuser } from "../../features/session/SessionsSlice"
 import { useNavigate } from 'react-router-dom'
+import BackgroundImage from "./BackGroundImage"
+import { Container, Form, FormContainer } from "./LoginStyle"
+
 
 
 function Signup() {
 
   const [updateUser,] = useSignupUserMutation()
-  // console.log(results)
   const dispatch = useDispatch()
   const naviagte = useNavigate()
 
@@ -45,19 +47,31 @@ function Signup() {
       [event.target.name]: event.target.value
     })
   }
-
-
+  
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <h2>Signup</h2>
-        <input placeholder="User Name" type={"text"} name="username" id="username" value={newUserData.username} onChange={handleChange} />
-        <input placeholder="Email" type={"text"} name="email" id="email" value={newUserData.email} onChange={handleChange} />
-        <input placeholder="password" type={"password"} name="password" id="password" value={newUserData.password} onChange={handleChange} />
-        <input type={"submit"} value="Create An Account" />
-      </form>
+    <>
+    <Container>
+      <BackgroundImage/>
+      <div className="content">
+        <FormContainer>
+          <Form>
+            <div className="title">
+              <h3>Signup</h3>
+            </div>
+            <div className="container">
+            <input placeholder="User Name" type={"text"} name="username" id="username" value={newUserData.username} onChange={handleChange} />
+            <input placeholder="Email" type={"text"} name="email" id="email" value={newUserData.email} onChange={handleChange} />
+            <input placeholder="password" type={"password"} name="password" id="password" value={newUserData.password} onChange={handleChange} />
+            <button onClick={handleSubmit}>Create Account</button>
+            </div>
+          </Form>
+        </FormContainer>
+      </div>
+    </Container>
 
-    </div>
+    </>
+  
+     
   )
 }
 
