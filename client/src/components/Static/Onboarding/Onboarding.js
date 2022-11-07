@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useFetchQuestionQuery, useUpdateUserDataMutation } from "../../../App/services/gamesApi"
 import { setCurrentQuestion } from '../../../features/Question/QuestionSlice'
+import { setCurrentuser } from "../../../features/session/SessionsSlice"
 import OnboardingItem from './OnboardingItem'
 import { useNavigate } from 'react-router-dom'
 
@@ -9,23 +10,19 @@ import { useNavigate } from 'react-router-dom'
 function Onboarding() {
   
   const { data = [], isFetching } = useFetchQuestionQuery()
-  const dispatch = useDispatch()
-  const naviagte = useNavigate()
-  // console.log(data)
   const currentQuestionId = useSelector(state => state.question.currentQuestionId)
   const userPlatform = useSelector(state => state.question.userPlatform)
   const userInterest = useSelector(state => state.question.userInterest)
   const currentUserId = useSelector(state => state.session.currentUser.id)
-
   const [updateUserData] = useUpdateUserDataMutation()
-
+  const naviagte = useNavigate()
+  const dispatch = useDispatch()
+  
+  
 
   const currentQuestion = data.find((question) => question.id === currentQuestionId)
-  console.log(currentQuestion)
-  console.log(data)
 
   function handleNextQuestion() {
-    console.log("hi")
     if (currentQuestionId < data.length) {
       dispatch(setCurrentQuestion());
     }
@@ -38,23 +35,16 @@ function Onboarding() {
 
       naviagte('/games')
       dispatch(setCurrentQuestion(null));
-      updateUserData({ id: currentUserId, user: user })
+      updateUserData({ id: currentUserId, user: user }).unwrap().then(fullied => dispatch(setCurrentuser(fullied)))
     }
-    console.log(currentQuestion)
   }
+  
 
   if (isFetching) return <div>Loading...</div>
 
-
-
-
   return (
-    <div>
-      <button onClick={handleNextQuestion}>click me</button>
-      <h1>Tell us a little about how you game</h1>
-      <main>
-        {currentQuestion ? <OnboardingItem question={currentQuestion} /> : "loading"}
-      </main>
+    <div >
+         <OnboardingItem question={currentQuestion} handleNextQuestion={handleNextQuestion} />
     </div>
 
   )
