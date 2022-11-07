@@ -8,7 +8,7 @@ import { Container, Form, FormContainer } from "./LoginStyle"
 
 function Signup() {
 
-  const [updateUser, {isError,error}] = useSignupUserMutation()
+  const [updateUser, { isError, error }] = useSignupUserMutation()
 
   const dispatch = useDispatch()
   const naviagte = useNavigate()
@@ -27,7 +27,7 @@ function Signup() {
       }
     }
 
-    updateUser(newUser).unwrap().then(fulfilled => (dispatch(setCurrentuser(fulfilled)),naviagte('/onboarding'))).catch(rejected => console.error(rejected))
+    updateUser(newUser).unwrap().then(fulfilled => (dispatch(setCurrentuser(fulfilled)), naviagte('/onboarding'))).catch(rejected => console.error(rejected))
 
   }
 
@@ -45,37 +45,37 @@ function Signup() {
     })
   }
 
-  function renderErrors(){
-    if(isError){
-      return(
+  function renderErrors() {
+    if (isError) {
+      return (
         error.data.error.map(e => <div>{e}</div>)
       )
     }
   }
 
 
-  
+
   return (
     <>
-    <Container>
-      <BackgroundImage/>
-      <div className="content">
-        <FormContainer>
-          <Form>
-            <div className="title">
-              <h3>Signup</h3>
-            </div>
-            <div className="container">
-            <input placeholder="User Name" type={"text"} name="username" id="username" value={newUserData.username} onChange={handleChange} />
-            <input placeholder="Email" type={"text"} name="email" id="email" value={newUserData.email} onChange={handleChange} />
-            <input placeholder="password" type={"password"} name="password" id="password" value={newUserData.password} onChange={handleChange} />
-            <button onClick={handleSubmit}>Create Account</button>
-            {renderErrors()}
-            </div>
-          </Form>
-        </FormContainer>
-      </div>
-    </Container>
+      <Container>
+        <BackgroundImage />
+        <div className="content">
+          <FormContainer>
+            <Form>
+              <div className="title">
+                <h3>Signup</h3>
+              </div>
+              <div className="container">
+                <input placeholder="User Name" type={"text"} name="username" id="username" value={newUserData.username} onChange={handleChange} />
+                <input placeholder="Email" type={"text"} name="email" id="email" value={newUserData.email} onChange={handleChange} />
+                <input placeholder="password" type={"password"} name="password" id="password" value={newUserData.password} onChange={handleChange} />
+                <button onClick={handleSubmit}>Create Account</button>
+                {renderErrors()}
+              </div>
+            </Form>
+          </FormContainer>
+        </div>
+      </Container>
     </>
 
   )

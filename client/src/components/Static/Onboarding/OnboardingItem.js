@@ -2,9 +2,7 @@ import React from 'react'
 import { useDispatch} from 'react-redux'
 import { selectUserIntrest, unselectInterest, selectUserPlatform, unselectPlatform } from '../../../features/Question/QuestionSlice'
 import {FaChessQueen} from 'react-icons/fa'
-import { Container, Wrapper } from './OnboardingStyle'
-
-
+import { Container } from './OnboardingStyle'
 
 function OnboardingItem({question,handleNextQuestion}) {
 
@@ -28,7 +26,6 @@ function OnboardingItem({question,handleNextQuestion}) {
     else {
       dispatch(unselectPlatform(value))
     }
-
   }
 
   const options = answers.map(answer => {

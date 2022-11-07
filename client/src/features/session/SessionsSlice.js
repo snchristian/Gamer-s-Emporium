@@ -3,8 +3,6 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
   currentUser: null,
   loggedIn: false,
-  value: 100
-
 }
 
 const sessionSlice = createSlice({

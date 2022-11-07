@@ -3,9 +3,9 @@ import { FaStar } from 'react-icons/fa'
 import { Wrapper } from './ReviewStyle'
 
 function StarRating({ setRating, rating }) {
-  
+
   const [hover, setHover] = useState(null)
-  
+
   return (
     <Wrapper>
       <div>{[...Array(5)].map((star, i) => {

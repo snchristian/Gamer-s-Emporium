@@ -6,9 +6,8 @@ import { setCurrentuser } from "../../../features/session/SessionsSlice"
 import OnboardingItem from './OnboardingItem'
 import { useNavigate } from 'react-router-dom'
 
-
 function Onboarding() {
-  
+
   const { data = [], isFetching } = useFetchQuestionQuery()
   const currentQuestionId = useSelector(state => state.question.currentQuestionId)
   const userPlatform = useSelector(state => state.question.userPlatform)
@@ -17,8 +16,6 @@ function Onboarding() {
   const [updateUserData] = useUpdateUserDataMutation()
   const naviagte = useNavigate()
   const dispatch = useDispatch()
-  
-  
 
   const currentQuestion = data.find((question) => question.id === currentQuestionId)
 
@@ -38,15 +35,13 @@ function Onboarding() {
       updateUserData({ id: currentUserId, user: user }).unwrap().then(fullied => dispatch(setCurrentuser(fullied)))
     }
   }
-  
 
   if (isFetching) return <div>Loading...</div>
 
   return (
     <div >
-         <OnboardingItem question={currentQuestion} handleNextQuestion={handleNextQuestion} />
+      <OnboardingItem question={currentQuestion} handleNextQuestion={handleNextQuestion} />
     </div>
-
   )
 }
 
