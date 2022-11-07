@@ -3,7 +3,7 @@ class GamesController < ApplicationController
 
   # GET /games
   def index
-    @games = Game.limit(20)
+    @games = Game.all
 
     render json: @games, status: :ok
   end

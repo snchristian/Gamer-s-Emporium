@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-  before_action :authentication
-  before_action :set_user, only: %i[ update destroy ]
+  before_action :authentication, only:%i[ update  ]
+  before_action :set_user, only: %i[ update  ]
 
   def show
 
@@ -24,16 +24,13 @@ class UsersController < ApplicationController
 
   def update
 
-     user = User.find_by(id:params[:id])
-     
-     if user 
-      binding.pry
-      user.update(likes:user_params[:likes])
-      user.update(platforms:user_params[:platforms])
-      render json: user
+     if @user 
+      @user.update(likes:user_params[:likes])
+      @user.update(platforms:user_params[:platforms])
+      render json: @user
      
     else 
-      render json: {error: "something is wrong"}
+      render json: {error: @user.errors.full_messages}, status: :unprocessable_entity
      end
       
   end

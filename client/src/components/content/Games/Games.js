@@ -7,7 +7,6 @@ function Games() {
 
   return (
     <main>
-      <div>Top Picks for You</div>
       <div><GamesList/></div>
     </main>
     
