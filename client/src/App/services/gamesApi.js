@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 
 export const gamesApi = createApi({
+  reducerPath:'gamesApi',
   baseQuery: fetchBaseQuery({
     baseUrl: '/'
   }),
@@ -12,6 +13,7 @@ export const gamesApi = createApi({
           return 'me'
         }
       }),
+      tagTypes:["Reviews","User"],
 
       signupUser: builder.mutation({
 
@@ -80,7 +82,7 @@ export const gamesApi = createApi({
       fetchReview: builder.query({
         query(id) {
           return `games/${id}/reviews`
-        },providesTags:['reviews'],
+        },providesTags:['Reviews'],
       }),
 
       addUserRevview:builder.mutation({
@@ -89,7 +91,7 @@ export const gamesApi = createApi({
           method: 'POST',
           body,
         }),
-        invalidatesTags:['reviews']  
+        invalidatesTags:['Reviews']  
       }),
 
       deleteUserReview: builder.mutation({
@@ -98,7 +100,7 @@ export const gamesApi = createApi({
           method: `DELETE`
 
         }),
-        invalidatesTags:['reviews']    
+        invalidatesTags:['Reviews']    
        }),
        
        editUserReview:builder.mutation({
@@ -107,7 +109,7 @@ export const gamesApi = createApi({
           method: 'PATCH',
           body: patch,
         }),
-        invalidatesTags:['reviews']
+        invalidatesTags:['Reviews']
     })
   }
 }
