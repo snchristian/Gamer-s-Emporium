@@ -11,6 +11,7 @@ import Onboarding from './components/Static/Onboarding/Onboarding';
 import Games from './components/content/Games/Games';
 import Game from './components/content/Games/Game';
 import MyGame from './components/content/Games/MyGame';
+import PrivateRoute from './components/Authentication/PrivateRoute';
 
 
 function App() {
@@ -32,9 +33,6 @@ function App() {
   }, [dispatch])
 
 
-
-
-
   return (
     <div className="App">
       <Navbar />
@@ -42,10 +40,10 @@ function App() {
         <Route exact path='/' element={<Home />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/onboarding' element={<Onboarding />}/>
-        <Route path='/games' element={<Games/>}/>
-        <Route path='/games/:id' element={<Game/>}/>
-        <Route path='/my-games' element={<MyGame/>}/>
+        <Route path='/onboarding'  element={<PrivateRoute><Onboarding /></PrivateRoute>}/>
+        <Route path='/games' element={<PrivateRoute><Games/></PrivateRoute>}/>
+        <Route path='/games/:id' element={<PrivateRoute><Game/></PrivateRoute>}/>
+        <Route path='/my-games' element={<PrivateRoute><MyGame/></PrivateRoute>}/>
       </Routes>
 
     </div>
