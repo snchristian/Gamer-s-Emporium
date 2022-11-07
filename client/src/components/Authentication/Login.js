@@ -5,13 +5,14 @@ import { setCurrentuser } from "../../features/session/SessionsSlice"
 import BackgroundImage from "./BackGroundImage"
 import { Container, Form, FormContainer } from "./LoginStyle"
 import { useNavigate } from 'react-router-dom'
+
 function Login() {
  
   const dispatch = useDispatch()
  const naviagte = useNavigate()
- const [updateUser] = useLoginUserMutation()
+ const [updateUser,{error,isError}] = useLoginUserMutation()
 
-
+ 
   const [UserData, setUserData] = useState({
     username: "",
     password: "",
@@ -24,9 +25,6 @@ function Login() {
     })
   }
 
-
-  
-
   function handleLoggedIn(event) {
     event.preventDefault();
 
@@ -35,14 +33,9 @@ function Login() {
       password: UserData.password
     }
 
-    // dispatch(loggedIn())
-    updateUser(UserInfo).unwrap().then(fulfilled => dispatch(setCurrentuser(fulfilled))).catch(rejected => console.error(rejected))
-    naviagte('/games')
-
-
+    updateUser(UserInfo).unwrap().then( fulfilled => 
+      dispatch(setCurrentuser(fulfilled)).then(naviagte('/games'))).catch(rejected => console.log(rejected))
   }
-
-
 
   return (
     <Container>
@@ -57,6 +50,7 @@ function Login() {
             <input placeholder='Username' type={"text"} name="username" id='username' value={UserData.username} onChange={handleChange} />
             <input placeholder='Password' type={"password"} name="password" id='password' value={UserData.password} onChange={handleChange} />
             <button onClick={handleLoggedIn}>Login to your account</button>
+            {isError && <div>{error.data.error}</div>} 
             </div>
           </Form>
         </FormContainer>

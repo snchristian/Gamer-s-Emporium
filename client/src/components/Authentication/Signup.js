@@ -6,11 +6,10 @@ import { useNavigate } from 'react-router-dom'
 import BackgroundImage from "./BackGroundImage"
 import { Container, Form, FormContainer } from "./LoginStyle"
 
-
-
 function Signup() {
 
-  const [updateUser,] = useSignupUserMutation()
+  const [updateUser, {isError,error}] = useSignupUserMutation()
+
   const dispatch = useDispatch()
   const naviagte = useNavigate()
 
@@ -28,9 +27,7 @@ function Signup() {
       }
     }
 
-    updateUser(newUser).unwrap().then(fulfilled => dispatch(setCurrentuser(fulfilled))).catch(rejected => console.error(rejected))
-    console.log(newUser)
-    naviagte('/onboarding')
+    updateUser(newUser).unwrap().then(fulfilled => (dispatch(setCurrentuser(fulfilled)),naviagte('/onboarding'))).catch(rejected => console.error(rejected))
 
   }
 
@@ -47,6 +44,16 @@ function Signup() {
       [event.target.name]: event.target.value
     })
   }
+
+  function renderErrors(){
+    if(isError){
+      return(
+        error.data.error.map(e => <div>{e}</div>)
+      )
+    }
+  }
+
+
   
   return (
     <>
@@ -63,15 +70,14 @@ function Signup() {
             <input placeholder="Email" type={"text"} name="email" id="email" value={newUserData.email} onChange={handleChange} />
             <input placeholder="password" type={"password"} name="password" id="password" value={newUserData.password} onChange={handleChange} />
             <button onClick={handleSubmit}>Create Account</button>
+            {renderErrors()}
             </div>
           </Form>
         </FormContainer>
       </div>
     </Container>
-
     </>
-  
-     
+
   )
 }
 
