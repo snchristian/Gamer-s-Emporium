@@ -7,6 +7,10 @@
 #   Character.create(name: "Luke", movie: movies.first)
 require 'rest-client'
 
+Game.destroy_all
+User.destroy_all
+Review.destroy_all
+
 puts "🌱 Seeding Questions..."
 
 Question.create(prompt:"Select three of your favorite genere of games", kind:"interest", answers:["Action","Adventure","RPG","Shooter","Indie","Puzzle", "Massibely Multiplayer","Racing"])
@@ -34,5 +38,20 @@ def games_dataset
 end
 
 games_dataset()
+
+puts "🌱 Seeding Users..."
+
+User.create(username: "Laura",password:"best",email:"shadowBroker@yahoo.com")
+User.create(username: "Leliana",password:"best204",email:"sisterNightingale@yahoo.com")
+User.create(username: "Betty",password:"best265",email:"TranquilityLane@yahoo.com")
+
+puts "🌱 Seeding Reviews..."
+
+Review.create(rating:5,content:"Love this game can't get enough",game_id:1, user_id:1)
+Review.create(rating:4,content:"Great Game",game_id:2, user_id:2)
+Review.create(rating:4,content:"Love this game ",game_id:3, user_id:2)
+Review.create(rating:4,content:"would recommend",game_id:1, user_id:3)
+
+
 
 puts "✅ Done seeding!"
