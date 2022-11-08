@@ -1,7 +1,5 @@
 import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom'
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { Container, Img } from './Styling/GameCardStyle'
 
 function GameCard({ game }) {
