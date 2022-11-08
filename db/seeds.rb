@@ -41,9 +41,9 @@ games_dataset()
 
 puts "🌱 Seeding Users..."
 
-User.create(username: "Laura",password:"best",email:"shadowBroker@yahoo.com")
-User.create(username: "Leliana",password:"best204",email:"sisterNightingale@yahoo.com")
-User.create(username: "Betty",password:"best265",email:"TranquilityLane@yahoo.com")
+User.create(username: "Laura",password:"best",email:"shadowBroker@yahoo.com",likes:["Puzzle","Shooter","RPG"], platforms:["Xbox","Nintendo Swtich","PC"])
+User.create(username: "Leliana",password:"best204",email:"sisterNightingale@yahoo.com",likes:["Indie","Action","RPG"], platforms:["Xbox","PlayStation 4","PC"])
+User.create(username: "Betty",password:"best265",email:"TranquilityLane@yahoo.com",likes:["Indie","Adventure","Shooter"], platforms:["PlayStation 3","PlayStation 4","PC"])
 
 puts "🌱 Seeding Reviews..."
 
