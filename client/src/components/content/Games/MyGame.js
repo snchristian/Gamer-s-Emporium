@@ -23,7 +23,7 @@ function MyGame() {
   return (
     <Container>
       <div className='content'>
-        <h1>My Game</h1>
+        <h1>My Games</h1>
         <div className='grid'>{UserGame}</div>
       </div>
     </Container>
