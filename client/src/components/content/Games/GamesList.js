@@ -8,9 +8,9 @@ function GamesList() {
   const { data = [], isFetching } = useFetchGamesQuery()
 
   const currentUser = useSelector(state => state.session.currentUser)
-
+  
   function getGamesMatchingUserLikes() {
-    if (!isFetching) {
+    if (!isFetching ) {
 
       const filitedArray = data.filter((data2) => data2.genres.some(genre => {
         return currentUser.likes.some((like) => {
@@ -40,8 +40,7 @@ function GamesList() {
       <CardSlider title="For You" data={getGamesMatchingUserLikes()} />
       <CardSlider title="Action" data={getGenreMatch("Action")} />
       <CardSlider title="RPG" data={getGenreMatch("RPG")} />
-      <CardSlider title="Shooter" data={getGenreMatch("Shooter")} />
-
+      <CardSlider title="Shooter" data={getGenreMatch("Shooter")}/>
     </div>
   )
 }

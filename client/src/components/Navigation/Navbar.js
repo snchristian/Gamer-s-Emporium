@@ -4,7 +4,7 @@ import { loggedOut } from "../../features/session/SessionsSlice"
 import { useDispatch, useSelector } from 'react-redux'
 import { useLogOutUserMutation } from '../../App/services/gamesApi'
 import { NavbarContainer } from './NavbarStyle'
-import { FaDungeon, FaTimes, FaBars, FaPowerOff } from 'react-icons/fa'
+import { FaDungeon, FaTimes, FaBars, FaPowerOff,FaSearch} from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 
 function Navbar() {
@@ -44,6 +44,7 @@ function Navbar() {
   function authorizedUserLinks() {
     return (
       <ul className={click ? "nav-menu active" : "nav-menu"}>
+        {/* <li> <input type="text" placeholder="Search.."/> </li> */}
         <li className="nav-item">
           <Link to="/games" className="nav-links" >Games</Link>
         </li>
@@ -63,6 +64,7 @@ function Navbar() {
         <nav className='navbar'>
           <div className='navbar-container'>
             <Link to='/' className='navbar-logo'>Game's Emporium <FaDungeon className='fa-dungeon' size={50} /></Link>
+            
             <div className='menu-icon' onClick={handleClick}>{click ? <FaTimes className='fa-times' /> : <FaBars className='fa-bars' />}</div>
             <ul className={click ? "nav-menu active" : "nav-menu"}>
             </ul>

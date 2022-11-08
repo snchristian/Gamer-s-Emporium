@@ -5,7 +5,7 @@ import { Navigate } from 'react-router-dom'
 
 function PrivateRoute({children}) {
     
-    const currentUser = useSelector(state => state.session.currentUser)
+    const currentUser = true
   return (
     currentUser ? children : <Navigate to='/login'/>
   )

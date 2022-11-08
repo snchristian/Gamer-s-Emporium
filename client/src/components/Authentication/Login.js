@@ -5,6 +5,7 @@ import { setCurrentuser } from "../../features/session/SessionsSlice"
 import BackgroundImage from "./BackGroundImage"
 import { Container, Form, FormContainer } from "./LoginStyle"
 import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function Login() {
 
@@ -50,6 +51,7 @@ function Login() {
               <input placeholder='Username' type={"text"} name="username" id='username' value={UserData.username} onChange={handleChange} />
               <input placeholder='Password' type={"password"} name="password" id='password' value={UserData.password} onChange={handleChange} />
               <button onClick={handleLoggedIn}>Login to your account</button>
+              <div>Click <Link to='/signup'>here</Link> to create an account</div>
               {isError && <div>{error.data.error}</div>}
             </div>
           </Form>

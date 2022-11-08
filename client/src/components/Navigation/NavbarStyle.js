@@ -88,6 +88,15 @@ export const NavbarContainer = styled.div`
   border:none
   }
 
+  // input[type=text] {
+  //   padding: 9px;
+  //   border: none;
+  //   margin-top: 26px;
+  //   margin-right: 16px;
+  //   font-size: 17px;
+  //   width:500px;
+  // }
+
 @media screen and (max-width: 960px) {
   .NavbarItems {
     position: relative;
