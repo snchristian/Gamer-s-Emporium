@@ -1,24 +1,36 @@
-# README
+# :video_game: Gamer's Emporium - Backend
+This simple backend works with the Gamer's Emporium App to receive requests and direct them along the right network path.The backend was designed using Ruby on Rails and PostgreSQL.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## :sparkler: Features
+- Allow a User to sign up and log in to an account.
+- Validates information coming from the user.
+- Authentic what is avaiable based on 
+-  .
 
-Things you may want to cover:
 
-* Ruby version
+## :computer: How To Use
 
-* System dependencies
+-  Fork and clone this repository
 
-* Configuration
+-   `bundle install`
 
-* Database creation
+-   `run rails db:migrate`
 
-* Database initialization
+-   `run rails  db:seed`
 
-* How to run the test suite
+-   `run rails s`
 
-* Services (job queues, cache servers, search engines, etc.)
+-  Follow direction to get the frontend  started. This will run on port [http://localhost:4000](http://localhost:4000).
 
-* Deployment instructions
+## Roadmap
+ - Development of the server. 
+ - Allow a user to search for recipes and find a recipe by name.
+ - Add filter functionality that allows users to filter through recipes by cuisine.
 
-* ...
+
+## :file_folder: Bulit With
+- Ruby  2.7.4
+- PosTgreSQL
+- Rails 7.0.3
+- RAWG API
+
