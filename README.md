@@ -4,9 +4,7 @@ This simple backend works with the Gamer's Emporium App to receive requests and 
 ## :sparkler: Features
 - Allow a User to sign up and log in to an account.
 - Validates information coming from the user.
-- Authentic what is avaiable based on 
--  .
-
+- Send a collection of data to the frontend.
 
 ## :computer: How To Use
 
@@ -21,12 +19,6 @@ This simple backend works with the Gamer's Emporium App to receive requests and 
 -   `run rails s`
 
 -  Follow direction to get the frontend  started. This will run on port [http://localhost:4000](http://localhost:4000).
-
-## Roadmap
- - Development of the server. 
- - Allow a user to search for recipes and find a recipe by name.
- - Add filter functionality that allows users to filter through recipes by cuisine.
-
 
 ## :file_folder: Bulit With
 - Ruby  2.7.4
