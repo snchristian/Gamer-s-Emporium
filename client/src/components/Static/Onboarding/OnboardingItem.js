@@ -5,6 +5,7 @@ import {FaChessQueen} from 'react-icons/fa'
 import { Container } from './OnboardingStyle'
 
 function OnboardingItem({question,handleNextQuestion}) {
+  console.log(question)
 
   const {  prompt, answers, kind } = question
   
